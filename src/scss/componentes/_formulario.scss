@@ -1,0 +1,76 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.formulario{
+    margin-top: 5rem;
+    width: 100%;
+}
+
+.campo{
+
+    display: flex;
+    
+    margin-bottom: 2rem;
+    align-items: center;
+
+
+    // Lo del flex sirve para que tome todo y para que ambos campos de introducir se alineen
+
+    label{
+        flex: 0 0 10rem;
+        color: v.$gris-suave;
+    }
+
+    input{
+        flex: 1;
+        border: none;
+        padding: calc(v.$separacion / 5);
+        border-radius: 1rem;
+    }
+}
+
+.contenedor-app
+{
+    @include m.tablet
+    {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        min-height: 100vh;
+    }
+
+    .imagen
+    {
+        height:30rem ;
+        background-image: url(../img/foto_fondo.jpg);
+        background-size: cover;
+        background-position: center center;
+
+        @include m.tablet 
+        {
+            height: auto;
+        }
+    }
+
+    .app
+    {
+        width: 95%;
+        margin: 0 auto;
+        padding: 3rem 0;
+    }
+}
+
+.formulario-final{
+    display : flex;
+    justify-content: space-between;
+    flex-direction: column;
+    
+    @include m.tablet{
+        flex-direction: row;
+    }
+
+
+    a{
+        margin-top: 1rem;
+    }
+    
+}
