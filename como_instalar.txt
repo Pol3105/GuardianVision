@@ -4,7 +4,6 @@ Abrimos una terminal en la capeta raiz del proyecto y ejecutamos
 1.- npm install
 
 2.- composer init
-    composer istall
 
 3.- le damos a todo enter y al final en la confirmacion le damos a que si por lo que se nos ha creado un documento .json
 
@@ -18,13 +17,15 @@ Abrimos una terminal en la capeta raiz del proyecto y ejecutamos
         }
     },
 
-5.- Tras hacer esto en una terminal ponemos:
+5.- composer istall
+
+6.- Tras hacer esto en una terminal ponemos:
 
     composer dump-autoload
 
     composer install
 
-5- Con eso ya deberiamos poder ejecutarlo 
+7- Con eso ya deberiamos poder ejecutarlo 
 
     - En una terminal poner => npm run dev 
 

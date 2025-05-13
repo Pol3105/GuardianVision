@@ -1,6 +1,6 @@
 <?php
 
-$db = mysqli_connect('localhost', 'root', 'root', 'ana_camacho_paez');
+$db = mysqli_connect('localhost', 'root', 'root', 'guardianvision');
 
 
 if (!$db) {

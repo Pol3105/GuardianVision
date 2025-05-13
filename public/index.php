@@ -3,6 +3,8 @@
 require_once __DIR__ . '/../includes/app.php';
 
 use Controllers\LoginController;
+use Controllers\CompraController;
+
 use MVC\Router;
 
 $router = new Router();
@@ -12,6 +14,10 @@ $router = new Router();
 $router->get('/',[LoginController::class,'inicio']);
 $router->post('/',[LoginController::class,'inicio']);
 
+//-------Index-------// 
+
+$router->get('/catalogo',[CompraController::class,'catalogo']);
+$router->post('/catalogo',[CompraController::class,'catalogo']);
 
 //-------Login-------//
 
