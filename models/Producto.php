@@ -11,7 +11,7 @@ class Producto extends ActiveRecord{
     protected static $tabla = 'Producto';
 
     // Un vector con las MISMAS columnas que tiene la base de datos
-    protected static $columnasBD = ['cod_producto','nombre','stock_actual','stock_minimo','precio','ubicacion'];
+    protected static $columnasBD = ['cod_producto','nombre','stock_actual','stock_minimo','precio','ubicacion','descripcion'];
 
 
     public $cod_producto;
@@ -20,6 +20,7 @@ class Producto extends ActiveRecord{
     public $stock_minimo;
     public $precio;
     public $ubicacion;
+    public $descripcion;
 
     
     //-------Constructor-------//
@@ -31,7 +32,7 @@ class Producto extends ActiveRecord{
         $this->stock_minimo = $args['stock_minimo'] ?? null;
         $this->precio = $args['precio'] ?? '0';
         $this->ubicacion = $args['ubicacion'] ?? '0';
-    
+        $this->descripcion = $args['descripcion'] ?? '0';
     }
 
 

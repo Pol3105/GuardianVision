@@ -17,7 +17,7 @@
                 <?php echo $producto->nombre ?>
             </h2>
             <p>
-                Descripción de la tienda, Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.     
+                <?php echo $producto->descripcion ?>
             </p>
 
             <p>

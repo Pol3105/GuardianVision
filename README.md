@@ -339,18 +339,18 @@ VALUES
 ('Almacén Sevilla', 'Avenida Videovigilancia 45, Sevilla', 800, 400);
 
 
-INSERT INTO Producto (cod_producto, nombre, stock_actual, stock_minimo, precio, ubicacion)
+INSERT INTO Producto (cod_producto, nombre, stock_actual, stock_minimo, precio, ubicacion, descripcion)
 VALUES 
-('CAM123', 'Cámara IP Full HD', 150, 50, 89.99, 1),
-('KIT456', 'Kit 4 Cámaras + DVR', 40, 10, 299.95, 2),
-('SEN789', 'Sensor Movimiento WiFi', 200, 50, 29.90, 1);
-('SEN790', 'Sensor de apertura para puertas/ventanas', 180, 40, 19.90, 1),
-('DVR001', 'Grabador DVR 8 canales con salida HDMI', 60, 15, 159.00, 2),
-('DISK01', 'Disco Duro 2TB para Videovigilancia', 100, 20, 89.50, 1),
-('MIC001', 'Micrófono ambiente para cámaras', 70, 10, 14.99, 2),
-('CAM126', 'Cámara PTZ Motorizada Full HD', 50, 10, 199.99, 1),
-('KIT458', 'Kit de instalación universal', 200, 50, 24.95, 2),
-('SEN791', 'Sensor de humo inalámbrico', 120, 30, 34.95, 1);
+('CAM123', 'Cámara IP Full HD', 150, 50, 89.99, 1, 'Cámara de vigilancia con resolución Full HD y visión nocturna'),
+('KIT456', 'Kit 4 Cámaras + DVR', 40, 10, 299.95, 2, 'Kit completo con 4 cámaras y grabador DVR incluido'),
+('SEN789', 'Sensor Movimiento WiFi', 200, 50, 29.90, 1, 'Sensor de movimiento inalámbrico con conectividad WiFi'),
+('SEN790', 'Sensor de apertura para puertas/ventanas', 180, 40, 19.90, 1, 'Sensor magnético para detección de aperturas'),
+('DVR001', 'Grabador DVR 8 canales con salida HDMI', 60, 15, 159.00, 2, 'DVR para grabación de video con salida HDMI, 8 canales'),
+('DISK01', 'Disco Duro 2TB para Videovigilancia', 100, 20, 89.50, 1, 'Disco duro de 2TB optimizado para grabación continua'),
+('MIC001', 'Micrófono ambiente para cámaras', 70, 10, 14.99, 2, 'Micrófono para captación de sonido en zonas vigiladas'),
+('CAM126', 'Cámara PTZ Motorizada Full HD', 50, 10, 199.99, 1, 'Cámara motorizada PTZ con control remoto y zoom'),
+('KIT458', 'Kit de instalación universal', 200, 50, 24.95, 2, 'Accesorios universales para instalación de cámaras'),
+('SEN791', 'Sensor de humo inalámbrico', 120, 30, 34.95, 1, 'Detector de humo con señal inalámbrica para alarmas');
 
 INSERT INTO proveedor (cod_proveedor, razon_social, direccion, telefono, email)
 VALUES 
