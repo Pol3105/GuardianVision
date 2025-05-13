@@ -3,7 +3,8 @@ Abrimos una terminal en la capeta raiz del proyecto y ejecutamos
 
 1.- npm install
 
-2.- composer istall
+2.- composer init
+    composer istall
 
 3.- le damos a todo enter y al final en la confirmacion le damos a que si por lo que se nos ha creado un documento .json
 
