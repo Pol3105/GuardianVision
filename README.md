@@ -271,9 +271,9 @@ CREATE TABLE IF NOT EXISTS Venta (
   idDetallesVenta INT NOT NULL,
   idCliente INT NOT NULL,
   idProducto VARCHAR(20) NOT NULL,
-  FOREIGN KEY (idIntalacion) REFERENCES Intalacion(idIntalacion),
+  FOREIGN KEY (idIntalacion) REFERENCES Instalacion(idIntalacion),
   FOREIGN KEY (idEnvio) REFERENCES Envio(idEnvio),
-  FOREIGN KEY (idDetallesVenta) REFERENCES `Detalles Venta`(idDetallesVenta),
+  FOREIGN KEY (idDetallesVenta) REFERENCES `Detalles_Venta`(idDetallesVenta),
   FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente)
 );
 
@@ -370,7 +370,7 @@ VALUES
 ('Carlos Ruiz', 'Av. Seguridad 22, Madrid', '622334455', 'carlos.ruiz@hotmail.com');
 
 
-INSERT INTO `Detalles Venta` (Cantidad, idProducto, idVenta)
+INSERT INTO `Detalles_Venta` (Cantidad, idProducto, idVenta)
 VALUES 
 (2, 'CAM123', 1),
 (1, 'KIT456', 1);
@@ -392,3 +392,7 @@ VALUES
 INSERT INTO Albaran (cod_albaran, fecha_recepcion, cod_pedido, estado_recepcion, observaciones)
 VALUES 
 ('ALB001', '2025-05-08', 'PED001', 'pendiente', 'Revisar embalaje al recibir');
+
+SHOW TABLES;
+
+SELECT * FROM venta;
