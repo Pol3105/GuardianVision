@@ -8,23 +8,23 @@
 <div class="contenedor">
 
     <?php
-        foreach ($productos as $producto):
+        foreach ($carrito as $producto):
     ?>
 
     <div class="divisor">
         <div class="texto">
             <h2>
-                <?php echo $producto->nombre ?>
+                <?php echo $producto->idProducto ?>
             </h2>
             <p>
-                <?php echo $producto->descripcion ?>
+                <?php echo $producto->idCliente ?>
             </p>
 
             <p>
-              <strong><?php echo $producto->precio ?></strong> $$
+              <strong><?php echo $producto->Cantidad ?></strong> $$
             </p>
             <div>
-                <a class="boton-compra" href="./">Shop now</a>
+                <a class="boton-compra" href="./">Pagar</a>
             </div>
         </div>
         <div class="contenedor-imagen imagen"></div>

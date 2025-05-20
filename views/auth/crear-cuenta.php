@@ -21,46 +21,57 @@
         <form class="formulario" method="POST" action="/crear-cuenta" >
 
             <div class="campo">
-                        <label for="nombre">Nombre</label>
+                        <label for="Nombre">Nombre</label>
                         <input 
-                            type="nombre"
-                            id="nombre"
-                            placeholder="Tu nombre..."
-                            name="nombre"
-                            value="<?php echo s($user->nombre) ?>"
+                            type="Nombre"
+                            id="Nombre"
+                            placeholder="Tu Nombre..."
+                            name="Nombre"
+                            value="<?php echo isset($user->Nombre) ?>"
                     />
             </div>
 
             <div class="campo">
-                    <label for="apellido">Apellido</label>
-                    <input 
-                        type="apellido"
-                        id="apellido"
-                        placeholder="Tu apellido..."
-                        name="apellido"
-                        value="<?php echo s($user->apellido) ?>"
+                        <label for="Direccion">Direccion</label>
+                        <input 
+                            type="Direccion"
+                            id="Direccion"
+                            placeholder="Tu Direccion..."
+                            name="Direccion"
+                            value="<?php echo isset($user->Direccion) ?>"
                     />
             </div>
 
             <div class="campo">
-                <label for="email">Email</label>
+                        <label for="Telefono">Telefono</label>
+                        <input 
+                            type="Telefono"
+                            id="Telefono"
+                            placeholder="Tu Telefono..."
+                            name="Telefono"
+                            value="<?php echo isset($user->Telefono) ?>"
+                    />
+            </div>
+
+            <div class="campo">
+                <label for="Email">Email</label>
                 <input 
-                    type="email"
-                    id="email"
-                    placeholder="email..."
-                    name="email"
-                    value="<?php echo s($user->email) ?>"
+                    type="Email"
+                    id="Email"
+                    placeholder="Email..."
+                    name="Email"
+                    value="<?php echo isset($user->Email) ?>"
                 />
             </div>
 
 
             <div class="campo">
-                <label for="password">Password</label>
+                <label for="contraseña">contraseña</label>
                 <input
                     type="password"
-                    id="password"
-                    placeholder="Tu password..."
-                    name="password"
+                    id="contraseña"
+                    placeholder="Tu contraseña..."
+                    name="contraseña"
                 />
             </div>
 

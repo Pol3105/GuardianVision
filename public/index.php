@@ -24,9 +24,9 @@ $router->post('/carrito',[CompraController::class,'carrito']);
 
 //-------Login-------//
 
-//$router->get('/login',[LoginController::class,'login']);
-//$router->post('/login',[LoginController::class,'login']);
-//$router->get('/logout',[LoginController::class,'logout']);
+$router->get('/login',[LoginController::class,'login']);
+$router->post('/login',[LoginController::class,'login']);
+$router->get('/logout',[LoginController::class,'logout']);
 
 
 //-------Olvidar Contraseña-------//
@@ -39,13 +39,13 @@ $router->post('/carrito',[CompraController::class,'carrito']);
 
 //-------Crear Cuenta-------//
 
-//$router->get('/crear-cuenta',[LoginController::class,'crearCuenta']);
-//$router->post('/crear-cuenta',[LoginController::class,'crearCuenta']);
+$router->get('/crear-cuenta',[LoginController::class,'crearCuenta']);
+$router->post('/crear-cuenta',[LoginController::class,'crearCuenta']);
 
 
 //-------Confirmar cuenta-------//
 
-//$router->get('/confirmar-cuenta',[LoginController::class,'confirmarCuenta']);
+$router->get('/confirmacion',[LoginController::class,'confirmacion']);
 //$router->get('/mensaje',[LoginController::class,'mensaje']);
 
 

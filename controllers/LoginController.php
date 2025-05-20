@@ -2,7 +2,7 @@
 
 namespace Controllers;
 
-use Model\User;
+use Model\Cliente;
 use MVC\Router;
 
 class LoginController
@@ -18,7 +18,6 @@ class LoginController
         Controlador de Login según email y contraseña.
     */
 
-    /*
     public static function login( Router $router )
     {
         $alertas = [];
@@ -28,35 +27,17 @@ class LoginController
         if ($_SERVER['REQUEST_METHOD'] === 'POST')
         {
             // Primero encontramos a que usuario nos referimos
-            $usuario = Usuarios::where("email", $_POST['email']);
+            $usuario = Cliente::where("Email", $_POST['email']);
             
             if($usuario){
-                
-                if( $usuario->ComprobacionContraseña($_POST['contraseña']) ){
+                $_SESSION['usuario_id'] = $usuario->id;
+                $_SESSION['usuario_nombre'] = $usuario->Nombre;
+                $_SESSION['usuario_email'] = $usuario->Email;
 
-                    if( $usuario->EstaVerificado()){
-                        $_SESSION['usuario_id'] = $usuario->id;
-                        $_SESSION['usuario_nombre'] = $usuario->nombre;
-                        $_SESSION['usuario_email'] = $usuario->email;
-                        $_SESSION['es_admin'] = $usuario->admin === '1';
-                        header('Location: /'); // Redirige al área privada
-                        exit;
-                    }
-                    else{
-                        Usuarios::setAlerta('error','El email no esta verificado, compruebe el email');
-                    }
-                }
-                else{
-                    Usuarios::setAlerta('error','El email o contraseña son incorrectos');
-                }
+                header('Location: /'); // Redirige al área privada
+                exit;
             }
-            else{
-                Usuarios::setAlerta('error','El email o contraseña son incorrectos');
-            }
-            
-        }
-
-        $alertas = Usuarios::getAlertas();
+         }
 
         $router->render('/auth/login',[
             "usuario" => $usuario,
@@ -64,7 +45,6 @@ class LoginController
         ]);
     }
 
-    */
 
     /*
         Cerrado de sesión
@@ -81,7 +61,6 @@ class LoginController
         Creación de cuenta
     */
 
-    /*
 
     public static function CrearCuenta( Router $router ){
 
@@ -91,28 +70,18 @@ class LoginController
         if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
             // Primero encontramos a que usuario nos referimos
-            $usuario = Usuarios::where("email", $_POST['email']);
+            $usuario = Cliente::where("Email", $_POST['Email']);
 
             if( $usuario ){
-                Usuarios::setAlerta('error','El email ya está registrado o no existe');
+                Cliente::setAlerta('error','El email ya está registrado o no existe');
 
-                $alertas = Usuarios::getAlertas();
+                $alertas = Cliente::getAlertas();
             }
             else{
-                $usuario = new Usuarios($_POST);
-
-                $usuario->HasheoContraseña();
-
-                $usuario->Verificaciones();
-
-                $alertas = Usuarios::getAlertas();
-
-                if( empty($alertas)){
-
-                    $usuario->guardar();
-
-                    header("Location: /confirmacion");
-                }
+                $usuario = new Cliente($_POST);
+                
+                $usuario->guardar();
+                header("Location: /confirmacion");
             }
         }
        
@@ -126,7 +95,6 @@ class LoginController
         $router->render('/auth/confirmacion');
     }
 
-    */
     
     // ---------------- Controlador login ----------------------
 

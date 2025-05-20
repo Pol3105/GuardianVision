@@ -17,8 +17,7 @@ class CompraController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             $carrito = new Carrito($_POST);
-
-            debuguear($carrito);
+            $carrito->guardar();
         }
         
         $router->render('/catalogo/objetos',[
@@ -31,7 +30,7 @@ class CompraController
 
         $carrito = Carrito::all();
         
-        $router->render('/catalogo/objetos',[
+        $router->render('/catalogo/carrito',[
             'carrito' => $carrito
         ]);
     }
