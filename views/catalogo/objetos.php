@@ -28,6 +28,7 @@
             </div>
         </div>
         <div class="contenedor-imagen imagen"></div>
+        <!--  img  class="contenedor-imagen" src="<?php __DIR__ . '/../../' ?>" alt="/../../src/img/index.webp"> --><
     </div>
 
     <?php
