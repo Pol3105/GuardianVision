@@ -210,18 +210,19 @@ CREATE TABLE IF NOT EXISTS DetallesVenta (
     ON UPDATE NO ACTION
 );	
 
-drop table Carrito;
 CREATE TABLE IF NOT EXISTS Carrito (
   idCarrito INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   Cantidad FLOAT NOT NULL,
+  idCliente INT NOT NULL,
   idProducto VARCHAR(20) NOT NULL,
-  unique( idCarrito,idProducto,Cantidad ),
+  unique( idCliente ,idProducto,Cantidad ),
   FOREIGN KEY (idProducto) REFERENCES Producto(cod_producto)
+	ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  FOREIGN KEY (idCliente) REFERENCES Cliente(idCliente)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
 );	
-
-
 
 -- -----------------------------------------------------
 -- Table `mydb`.`Cliente`
