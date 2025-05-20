@@ -14,10 +14,13 @@ $router = new Router();
 $router->get('/',[LoginController::class,'inicio']);
 $router->post('/',[LoginController::class,'inicio']);
 
-//-------Index-------// 
+//-------catalogo y carrito-------// 
 
 $router->get('/catalogo',[CompraController::class,'catalogo']);
 $router->post('/catalogo',[CompraController::class,'catalogo']);
+
+$router->get('/carrito',[CompraController::class,'carrito']);
+$router->post('/carrito',[CompraController::class,'carrito']);
 
 //-------Login-------//
 

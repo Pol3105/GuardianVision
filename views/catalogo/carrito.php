@@ -24,11 +24,7 @@
               <strong><?php echo $producto->precio ?></strong> $$
             </p>
             <div>
-                <form class="formulario" action="./objetos.php" method="post">
-                    <input type="hidden" name="producto_id" value="<?php echo $producto->id ?>">
-
-                    <input class="boton" type="submit" value="Agregar al carrito">
-                </form>
+                <a class="boton-compra" href="./">Shop now</a>
             </div>
         </div>
         <div class="contenedor-imagen imagen"></div>
