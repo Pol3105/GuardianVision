@@ -62,7 +62,7 @@ class LoginController
     */
 
 
-    public static function CrearCuenta( Router $router ){
+    public static function crearCuenta( Router $router ){
 
         $alertas = [];
         $usuario = null;
