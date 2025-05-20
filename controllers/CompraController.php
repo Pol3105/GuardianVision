@@ -16,7 +16,9 @@ class CompraController
         $productos = Producto::all();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-            debuguear($_POST);
+            $carrito = new Carrito($_POST);
+
+            debuguear($carrito);
         }
         
         $router->render('/catalogo/objetos',[

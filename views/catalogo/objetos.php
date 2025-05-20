@@ -9,6 +9,7 @@
 
     <?php
         foreach ($productos as $producto):
+            
     ?>
 
     <div class="divisor">
@@ -24,8 +25,8 @@
               <strong><?php echo $producto->precio ?></strong> $$
             </p>
             <div>
-                <form class="formulario" action="./objetos.php" method="post">
-                    <input type="hidden" name="producto_id" value="<?php echo $producto->id ?>">
+                <form class="formulario" action="catalogo" method="post">
+                    <input type="hidden" name="idProducto" value="<?php echo $producto->cod_producto ?>">
 
                     <input class="boton" type="submit" value="Agregar al carrito">
                 </form>
