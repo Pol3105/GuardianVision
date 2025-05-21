@@ -29,6 +29,13 @@ use Model\Producto;
             <p>
               Cantidad en el carrito: <strong><?php echo $producto->Cantidad ?></strong>
             </p>
+
+            <form class="formulario" action="carrito" method="post">
+                    <input type="hidden" name="idCliente" value="<?php echo $_SESSION['usuario_id'] ?>">
+                    <input type="hidden" name="idProducto" value="<?php echo $producto2->cod_producto ?>">
+
+                    <input class="boton-compra" type="submit" value="Eliminar">
+                </form>
         </div>
         <div class="contenedor-imagen imagen_<?php echo $producto2->imagen?>">      
         </div>

@@ -37,6 +37,21 @@ class CompraController
     public static function carrito( Router $router )
     {
 
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+            $carrito_existe = Carrito::encontrarCarrito($_POST['idCliente'],$_POST['idProducto']);
+
+            if( $carrito_existe->Cantidad == '1'){
+                $carrito_existe->eliminar();
+            }
+            else{
+                $carrito_existe->eliminarCantidad();
+
+                $carrito_existe->actualizar();
+            }
+        }
+
         $carrito = Carrito::all();
 
         $pago_total = 0;

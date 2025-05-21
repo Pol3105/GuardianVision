@@ -38,6 +38,11 @@ class Carrito extends ActiveRecord{
         $this->Cantidad ++;
     }
 
+    public function eliminarCantidad()
+    {
+        $this->Cantidad--;
+    }
+
 }
 
 

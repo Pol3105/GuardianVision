@@ -29,7 +29,7 @@
                     <input type="hidden" name="idProducto" value="<?php echo $producto->cod_producto ?>">
                     <input type="hidden" name="Cantidad" value="1">
 
-                    <input class="boton" type="submit" value="Agregar al carrito">
+                    <input class="boton-compra" type="submit" value="Agregar al carrito">
                 </form>
             </div>
         </div>
