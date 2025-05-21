@@ -10,8 +10,16 @@ class CompraController
 {
     // ---------------- Controlador index ----------------------
 
-    public static function catalogo( Router $router )
+    public static function catalogo(Router $router)
     {
+        // Recibir el término de búsqueda enviado por POST
+        $buscar = $_POST['buscar'] ?? null;
+
+        if($buscar){
+            $productos = Producto::buscarPorNombre($buscar);
+        } else {
+            $productos = Producto::all();
+        }
 
         $productos = Producto::all();
 
@@ -30,7 +38,8 @@ class CompraController
         }
         
         $router->render('/catalogo/objetos',[
-            'productos' => $productos
+            'productos' => $productos,
+            'buscar' => $buscar
         ]);
     }
 

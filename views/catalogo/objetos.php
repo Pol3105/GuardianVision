@@ -7,12 +7,16 @@
 
 <div class="contenedor">
 
-    <?php
-        foreach ($productos as $producto):
-    ?>
+    <form method="POST" action="/catalogo" style="margin-bottom: 20px;">
+        <input type="text" name="buscar" placeholder="Buscar productos..." value="<?= htmlspecialchars($buscar ?? '') ?>">
+        <button type="submit">Buscar</button>
+    </form>
 
-    <div class="divisor">
-        <div class="texto">
+    <?php if(empty($productos)): ?>
+        <p>No se encontraron productos.</p>
+    <?php else: ?>
+        <?php foreach ($productos as $producto): ?>
+        <div class="divisor">
             <h2>
                 <?php echo $producto->nombre ?>
             </h2>
@@ -32,16 +36,16 @@
                     <input class="boton-compra" type="submit" value="Agregar al carrito">
                 </form>
             </div>
+
+            <div class="contenedor-imagen imagen_<?php echo $producto->imagen?>">      
+            </div>
         </div>
-        <div class="contenedor-imagen imagen_<?php echo $producto->imagen?>">      
-        </div>
-    </div>
 
-    <?php
+        <?php
 
-        endforeach;
-    
-    ?>
-
+            endforeach;
+        
+        ?>
+    <?php endif; ?>
 
 </div>

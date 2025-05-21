@@ -53,6 +53,12 @@ class Producto extends ActiveRecord{
         return self::$alertas;
     }
 
+    public static function buscarPorNombre($termino){
+        $termino = self::$db->escape_string($termino);
+        $query = "SELECT * FROM " . static::$tabla . " WHERE nombre LIKE '%{$termino}%'";
+        return self::consultarSQL($query);
+    }
+
 }
 
 
