@@ -28,6 +28,15 @@ class Carrito extends ActiveRecord{
         $this->idCliente = $args['idCliente'] ?? null;
     }
 
+    public static function encontrarCarrito( $idCliente , $idProducto ){
+        $query = "SELECT * FROM " . static::$tabla  ." WHERE idProducto = '$idProducto' and idCliente = '$idCliente'";
+        $resultado = self::consultarSQL($query);
+        return array_shift( $resultado ) ;
+    }
+
+    public function aumentarCantidad(){
+        $this->Cantidad ++;
+    }
 
 }
 

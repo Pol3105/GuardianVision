@@ -16,8 +16,17 @@ class CompraController
         $productos = Producto::all();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-            $carrito = new Carrito($_POST);
-            $carrito->guardar();
+
+            $carrito_existe = Carrito::encontrarCarrito($_POST['idCliente'],$_POST['idProducto']);
+
+            if( $carrito_existe){
+                $carrito_existe->aumentarCantidad();
+                $carrito_existe->actualizar();
+            }
+            else{
+                $carrito = new Carrito($_POST);
+                $carrito->guardar();
+            }
         }
         
         $router->render('/catalogo/objetos',[
@@ -29,9 +38,12 @@ class CompraController
     {
 
         $carrito = Carrito::all();
+
+        $pago_total = 0;
         
         $router->render('/catalogo/carrito',[
-            'carrito' => $carrito
+            'carrito' => $carrito,
+            'pago_total' => $pago_total
         ]);
     }
 
