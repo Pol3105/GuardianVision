@@ -7,26 +7,21 @@
 
 <div class="contenedor">
 
-<<<<<<< HEAD
-        <?php
-            include_once __DIR__ . "/../templates/alertas.php";
-        ?>
-
-    <?php
-        foreach ($productos as $producto):
-    ?>
-=======
     <form method="POST" action="/catalogo" style="margin-bottom: 20px;">
         <input type="text" name="buscar" placeholder="Buscar productos..." value="<?= htmlspecialchars($buscar ?? '') ?>">
         <button type="submit">Buscar</button>
     </form>
->>>>>>> e50efe56b3a6219f05858083f423430f5719000c
 
-    <?php if(empty($productos)): ?>
-        <p>No se encontraron productos.</p>
-    <?php else: ?>
-        <?php foreach ($productos as $producto): ?>
-        <div class="divisor">
+    <?php
+        include_once __DIR__ . "/../templates/alertas.php";
+    ?>
+
+    <?php
+        foreach ($productos as $producto):
+    ?>
+
+    <div class="divisor">
+        <div class="texto">
             <h2>
                 <?php echo $producto->nombre ?>
             </h2>
@@ -46,16 +41,16 @@
                     <input class="boton-compra" type="submit" value="Agregar al carrito">
                 </form>
             </div>
-
-            <div class="contenedor-imagen imagen_<?php echo $producto->imagen?>">      
-            </div>
         </div>
+        <div class="contenedor-imagen imagen_<?php echo $producto->imagen?>">      
+        </div>
+    </div>
 
-        <?php
+    <?php
 
-            endforeach;
-        
-        ?>
-    <?php endif; ?>
+        endforeach;
+    
+    ?>
+
 
 </div>
