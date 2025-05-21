@@ -30,8 +30,8 @@ use Model\Producto;
               Cantidad en el carrito: <strong><?php echo $producto->Cantidad ?></strong>
             </p>
         </div>
-        <div class="contenedor-imagen imagen"></div>
-        <!--  img  class="contenedor-imagen" src="<?php __DIR__ . '/../../' ?>" alt="/../../src/img/index.webp"> --><
+        <div class="contenedor-imagen imagen_<?php echo $producto2->imagen?>">      
+        </div>
     </div>
 
     <?php

@@ -33,7 +33,7 @@ class Producto extends ActiveRecord{
         $this->precio = $args['precio'] ?? '0';
         $this->ubicacion = $args['ubicacion'] ?? null;
         $this->descripcion = $args['descripcion'] ?? null;
-        $this->descripcion = $args['descripcion'] ?? null;
+        $this->imagen = $args['imagen'] ?? null;
     }
 
 

@@ -9,7 +9,6 @@
 
     <?php
         foreach ($productos as $producto):
-            
     ?>
 
     <div class="divisor">
@@ -34,8 +33,8 @@
                 </form>
             </div>
         </div>
-        <div class="contenedor-imagen imagen"></div>
-        <!--  img  class="contenedor-imagen" src="<?php __DIR__ . '/../../' ?>" alt="/../../src/img/index.webp"> --><
+        <div class="contenedor-imagen imagen_<?php echo $producto->imagen?>">      
+        </div>
     </div>
 
     <?php

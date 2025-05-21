@@ -1,6 +1,63 @@
 @use 'base/variables' as v;
 @use 'base/mixins' as m;
 
+.imagen_CámaraIPFullHD{
+    height:30rem ;
+    background-image: url(../img/CámaraIPFullHD.webp);
+    background-size: cover;
+    background-position: center center;
+}
+
+.imagen_CámaraPTZMotorizadaFullHD{
+    height:30rem ;
+    background-image: url(../img/CámaraPTZMotorizadaFullHD.webp);
+    background-size: cover;
+    background-position: center center;
+}
+
+.imagen_DiscoDuro2TBparaVideovigilancia{
+    height:30rem ;
+    background-image: url(../img/DiscoDuro2TBparaVideovigilancia.webp);
+    background-size: cover;
+    background-position: center center;
+}
+
+.imagen_GrabadorDVR8canalesconsalidaHDMI{
+    height:30rem ;
+    background-image: url(../img/GrabadorDVR8canalesconsalidaHDMI.webp);
+    background-size: cover;
+    background-position: center center;
+}
+
+.imagen_Kit4Cámaras{
+    height:30rem ;
+    background-image: url(../img/Kit4Cámaras+DVR.webp);
+    background-size: cover;
+    background-position: center center;
+}
+
+.imagen_Kitdeinstalaciónuniversal{
+    height:30rem ;
+    background-image: url(../img/Kitdeinstalaciónuniversal.webp);
+    background-size: cover;
+    background-position: center center;
+}
+
+
+.imagen_Sensordehumoinalámbrico{
+    height:30rem ;
+    background-image: url(../img/Sensordehumoinalámbrico.webp);
+    background-size: cover;
+    background-position: center center;
+}
+
+.imagen_SensorMovimientoWiFi{
+    height:30rem ;
+    background-image: url(../img/SensorMovimientoWiFi.webp);
+    background-size: cover;
+    background-position: center center;
+}
+
 .imagen{
     height:30rem ;
     background-image: url(../img/index.webp);
