@@ -45,7 +45,7 @@
 
         <div class="formulario-final">
                 <a href="/crear-cuenta">¿Aún no tienes una cuenta? Crear una</a>
-                <a href="/olvidar">Olvidastes tu contraseña?</a>
+                <a href="/logout">Cerrar la sesión</a>
         </div>
     </div>
 </div>

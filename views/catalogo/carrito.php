@@ -11,6 +11,10 @@ use Model\Producto;
 <div class="contenedor">
 
     <?php
+        include_once __DIR__ . "/../templates/alertas.php";
+    ?>
+
+    <?php
         foreach ($carrito as $producto):
             $producto2 = Producto::where('cod_producto',$producto->idProducto);
 
@@ -31,7 +35,7 @@ use Model\Producto;
             </p>
 
             <form class="formulario" action="carrito" method="post">
-                    <input type="hidden" name="idCliente" value="<?php echo $_SESSION['usuario_id'] ?>">
+                    <input type="hidden" name="idCliente" value="<?php echo isset($_SESSION['usuario_id']) ?>">
                     <input type="hidden" name="idProducto" value="<?php echo $producto2->cod_producto ?>">
 
                     <input class="boton-compra" type="submit" value="Eliminar">
@@ -48,7 +52,7 @@ use Model\Producto;
     <div class="divisor">
         <div class="texto">
             <h2>
-                <?php echo $pago_total ?>
+                <?php echo $pago_total ?> $$
             </h2>
             <div>
                 <a class="boton-compra" href="./">Pagar</a>

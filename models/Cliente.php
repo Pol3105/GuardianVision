@@ -39,16 +39,38 @@ class Cliente extends ActiveRecord{
     //-------Validaciones-------//
 
     public function validar(){
-        if(!$this->Nombre){
-            self::$alertas['error'][] = "Debes añadir un Nombre";
+        self::$alertas = []; // Reiniciar alertas por si se reutiliza
+        if (!$this->Nombre) {
+            self::$alertas['error'][] = "Debes añadir un nombre";
         }
-        if(!$this->Direccion){
-            self::$alertas['error'][] = "Debes añadir un Direccion";
+        if (!$this->Direccion) {
+            self::$alertas['error'][] = "Debes añadir una dirección";
         }
-        
+    
+        if (!$this->Email) {
+            self::$alertas['error'][] = "Debes añadir un correo electrónico";
+        } elseif (!filter_var($this->Email, FILTER_VALIDATE_EMAIL)) {
+            self::$alertas['error'][] = "El formato del correo no es válido";
+        }
+    
+        if (!$this->Telefono) {
+            self::$alertas['error'][] = "Debes añadir un número de teléfono";
+        } elseif (!preg_match('/^[0-9]{9}$/', $this->Telefono)) {
+            self::$alertas['error'][] = "El teléfono debe tener 9 dígitos";
+        }
+    
+        if (!$this->contraseña) {
+            self::$alertas['error'][] = "Debes añadir una contraseña";
+        } elseif (strlen($this->contraseña) < 6) {
+            self::$alertas['error'][] = "La contraseña debe tener al menos 6 caracteres";
+        }
+    
         return self::$alertas;
     }
-
+    
+    public function ComprobacionContraseña($valor) {
+        return $valor == $this->contraseña;
+    }
 }
 
 

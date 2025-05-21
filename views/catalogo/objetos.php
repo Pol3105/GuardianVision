@@ -7,6 +7,10 @@
 
 <div class="contenedor">
 
+        <?php
+            include_once __DIR__ . "/../templates/alertas.php";
+        ?>
+
     <?php
         foreach ($productos as $producto):
     ?>
@@ -25,7 +29,7 @@
             </p>
             <div>
                 <form class="formulario" action="catalogo" method="post">
-                    <input type="hidden" name="idCliente" value="<?php echo $_SESSION['usuario_id'] ?>">
+                    <input type="hidden" name="idCliente" value="<?php echo isset($_SESSION['usuario_id']) ?>">
                     <input type="hidden" name="idProducto" value="<?php echo $producto->cod_producto ?>">
                     <input type="hidden" name="Cantidad" value="1">
 

@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Model\Cliente;
+use Model\Carrito;
 use MVC\Router;
 
 class LoginController
@@ -28,16 +29,23 @@ class LoginController
         {
             // Primero encontramos a que usuario nos referimos
             $usuario = Cliente::where("Email", $_POST['email']);
-            
-            if($usuario){
-                $_SESSION['usuario_id'] = $usuario->id;
-                $_SESSION['usuario_nombre'] = $usuario->Nombre;
-                $_SESSION['usuario_email'] = $usuario->Email;
 
-                header('Location: /'); // Redirige al área privada
-                exit;
+            if( $usuario->ComprobacionContraseña($_POST['password']) ){
+                
+                    $_SESSION['usuario_id'] = $usuario->id;
+                    $_SESSION['usuario_nombre'] = $usuario->Nombre;
+                    $_SESSION['usuario_email'] = $usuario->Email;
+    
+                    header('Location: /'); // Redirige al área privada
+                    exit;
             }
+            else{
+                Cliente::setAlerta('error','El email o contraseña son incorrectos');
+            }
+            
          }
+
+         $alertas = Cliente::getAlertas();
 
         $router->render('/auth/login',[
             "usuario" => $usuario,
@@ -53,6 +61,12 @@ class LoginController
     public static function logout( ){
         // Elimina todas las variables de sesión
         $_SESSION = [];
+
+        $carrito = Carrito::all();
+
+        foreach( $carrito as $carro){
+            $carro->eliminar();
+        }
 
         header('Location: /login');
     }
@@ -74,14 +88,17 @@ class LoginController
 
             if( $usuario ){
                 Cliente::setAlerta('error','El email ya está registrado o no existe');
-
                 $alertas = Cliente::getAlertas();
             }
             else{
                 $usuario = new Cliente($_POST);
-                
-                $usuario->guardar();
-                header("Location: /confirmacion");
+
+                $alertas = $usuario->validar();
+
+                if( empty($alertas) ){
+                    $usuario->guardar();
+                    header("Location: /confirmacion");
+                }
             }
         }
        
@@ -95,75 +112,5 @@ class LoginController
         $router->render('/auth/confirmacion');
     }
 
-    
-    // ---------------- Controlador login ----------------------
-
-    /*
-
-    public static function cerrar( Router $router )
-    {
-        
-        $_SESSION = [];          // Vacía todas las variables de sesión
-        session_destroy();       // Destruye la sesión activa
-
-        $router->render('/index');
-    }
-
-    public static function login( Router $router )
-    {
-
-        $alertas = [];
-        $cliente = null;
-
-        $alertas = Cliente::getAlertas();
-
-        $router->render('/auth/login',[
-            "cliente" => $cliente,
-            'alertas' =>$alertas
-        ]);
-    }
-
-    public static function CrearCuenta( Router $router )
-    {
-        // Iniciar la sesión si no está iniciada
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-
-        
-        $alertas = [];
-        $cliente = null;
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST')
-        {
-
-            $cliente = new Cliente($_POST);
-
-
-            if (empty($alertas))
-            {
-                $resultado = $cliente->guardar();
-
-                if ($resultado)
-                {
-                    Cliente::setAlerta('exito','Usuario creado correctamente');
-                }
-                else
-                {
-                    Cliente::setAlerta('error','El usuario no se pudo crear');
-                }
-            }
-            
-        }
-
-        $alertas = Cliente::getAlertas();
-        
-        $router->render('/auth/crear-cuenta',[
-            "cliente" => $cliente,
-            'alertas' =>$alertas
-        ]);
-    }
-
-    */
 
 }

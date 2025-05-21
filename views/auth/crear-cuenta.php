@@ -81,7 +81,6 @@
 
         <div class="formulario-final">
                 <a href="/login">¿Ya tienes una cuenta? Inicia Sesión</a>
-                <a href="/olvidar">Olvidastes tu contraseña?</a>
         </div>
     </div>
 </div>
