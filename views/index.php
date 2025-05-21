@@ -17,7 +17,7 @@ require_once __DIR__ . '/templates/header.php';
             </h1>
 
             <p>
-                Descripción de la tienda, Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.     
+                GuardianVision es una tienda especializada en cámaras de seguridad, que combina equipos de última generación con un servicio exclusivo de instalación profesional para garantizar tu tranquilidad las 24 horas del día.     
             </p>
             <div>
                 <a class="boton-compra" href="./catalogo">Shop now</a>
