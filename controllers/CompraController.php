@@ -17,7 +17,7 @@ class CompraController
 
         $productos = Producto::all();
 
-
+        $buscar = null;
         $alertas = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST'){
