@@ -17,7 +17,6 @@ use Model\Producto;
     <?php
         foreach ($carrito as $producto):
             $producto2 = Producto::where('cod_producto',$producto->idProducto);
-
             $pago_total += ($producto2->precio * $producto->Cantidad);
     ?>
 
