@@ -65,6 +65,13 @@
     background-position: center center;
 }
 
+.imagen_login{
+    height: 70rem;
+    background-image: url(../img/foto_fondo.webp);
+    background-size: cover;
+    background-position: center center;
+}
+
 .contenedor-imagen{
 
     @include m.tablet{

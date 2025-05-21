@@ -29,8 +29,7 @@ class CompraController
                 $productos = Producto::buscarPorNombre($buscar);
             }else{
                 if( !$_POST['idCliente']){
-
-                    header("Location: /login");
+                    header("Location: /login?error");
                     exit;
                 }
                 else{

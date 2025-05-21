@@ -1,7 +1,7 @@
 
 <nav class="nav">
     <a href="./" class="logo">
-        <p>LOGO</p>
+        <p>GUARDIAN VISION</p>
     </a>
     <div class="navegacion-derecha">
         <a class="enlace" href="/catalogo">Catalogo</a>

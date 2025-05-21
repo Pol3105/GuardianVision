@@ -5,7 +5,7 @@
 
 
 <div class="contenedor-app">
-    <div class="imagen"></div>
+    <div class="imagen_login"></div>
 
     <div class="app">
 

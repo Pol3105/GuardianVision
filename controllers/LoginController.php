@@ -24,7 +24,11 @@ class LoginController
         $alertas = [];
         $usuario = null;
 
-        
+        if ($_SERVER['REQUEST_METHOD'] === 'GET'){
+            if( isset($_GET['error']))
+                Cliente::setAlerta('error','Necesitas iniciar sesión');
+        }
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST')
         {
             // Primero encontramos a que usuario nos referimos
