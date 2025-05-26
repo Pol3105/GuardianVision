@@ -22,29 +22,32 @@ class CompraController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-            // Recibir el término de búsqueda enviado por POST
-            $buscar = $_POST['buscar'] ?? null;
-
-            if($buscar){
-                $productos = Producto::buscarPorNombre($buscar);
-            }else{
-                if( !$_POST['idCliente']){
+            // Si viene el campo buscar (aunque esté vacío)
+            if(array_key_exists('buscar', $_POST)) {
+                $buscar = $_POST['buscar'];
+                if(trim($buscar) !== '') {
+                    $productos = Producto::buscarPorNombre($buscar);
+                } else {
+                    $productos = Producto::all();
+                }
+            }
+            // Si viene idCliente e idProducto, es acción de carrito
+            else if(isset($_POST['idCliente']) && isset($_POST['idProducto'])) {
+                if(!$_POST['idCliente']){
                     header("Location: /login?error");
                     exit;
                 }
+                $carrito_existe = Carrito::encontrarCarrito($_POST['idCliente'],$_POST['idProducto']);
+
+                if( $carrito_existe){
+                    $carrito_existe->aumentarCantidad();
+                    $carrito_existe->actualizar();
+                    Cliente::setAlerta('exito','Se ha aumentado la cantidad');
+                }
                 else{
-                    $carrito_existe = Carrito::encontrarCarrito($_POST['idCliente'],$_POST['idProducto']);
-    
-                    if( $carrito_existe){
-                        $carrito_existe->aumentarCantidad();
-                        $carrito_existe->actualizar();
-                        Cliente::setAlerta('exito','Se ha aumentado la cantidad');
-                    }
-                    else{
-                        $carrito = new Carrito($_POST);
-                        $carrito->guardar();
-                        Cliente::setAlerta('exito','Se ha añadido el objeto al carrito');
-                    }
+                    $carrito = new Carrito($_POST);
+                    $carrito->guardar();
+                    Cliente::setAlerta('exito','Se ha añadido el objeto al carrito');
                 }
             }
         }
