@@ -4,6 +4,9 @@ require_once __DIR__ . '/templates/header.php';
 
 ?>
 
+<?php
+    include_once __DIR__ . "/templates/alertas.php";
+?>
 
 <div class="contenedor">
 

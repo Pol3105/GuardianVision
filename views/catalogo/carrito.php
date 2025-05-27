@@ -54,7 +54,7 @@ use Model\Producto;
                 <?php echo $pago_total ?> $$
             </h2>
             <div>
-                <a class="boton-compra" href="./">Pagar</a>
+                <a class="boton-compra" href="/?pagado=1">Pagar</a>
             </div>
         </div>
     </div>

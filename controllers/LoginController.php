@@ -11,8 +11,26 @@ class LoginController
     // ---------------- Controlador index ----------------------
 
     public static function inicio( Router $router )
-    {
-        $router->render('/index');
+    {   
+        $alertas = [];
+        
+        if ($_SERVER['REQUEST_METHOD'] === 'GET'){
+            if( isset($_GET['pagado'])){
+                $carrito = Carrito::all();
+
+                foreach( $carrito as $carro){
+                    $carro->eliminar();
+                }
+
+                Cliente::setAlerta('exito','compra realizada con exito');
+            }
+        }
+
+        $alertas = Cliente::getAlertas();
+
+        $router->render('/index',[
+            "alertas" => $alertas
+        ]);
     }
 
     /*
