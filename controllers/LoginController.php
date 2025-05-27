@@ -52,14 +52,18 @@ class LoginController
             // Primero encontramos a que usuario nos referimos
             $usuario = Cliente::where("Email", $_POST['email']);
 
-            if( $usuario->ComprobacionContraseña($_POST['password']) ){
-                
+            if( $usuario  ){
+                if($usuario->ComprobacionContraseña($_POST['password'])){
                     $_SESSION['usuario_id'] = $usuario->id;
                     $_SESSION['usuario_nombre'] = $usuario->Nombre;
                     $_SESSION['usuario_email'] = $usuario->Email;
     
                     header('Location: /'); // Redirige al área privada
                     exit;
+                }
+                else{
+                    Cliente::setAlerta('error','El email o contraseña son incorrectos');
+                }
             }
             else{
                 Cliente::setAlerta('error','El email o contraseña son incorrectos');
@@ -67,7 +71,7 @@ class LoginController
             
          }
 
-         $alertas = Cliente::getAlertas();
+        $alertas = Cliente::getAlertas();
 
         $router->render('/auth/login',[
             "usuario" => $usuario,
@@ -107,7 +111,7 @@ class LoginController
 
             // Primero encontramos a que usuario nos referimos
             $usuario = Cliente::where("Email", $_POST['Email']);
-
+    
             if( $usuario ){
                 Cliente::setAlerta('error','El email ya está registrado o no existe');
                 $alertas = Cliente::getAlertas();
