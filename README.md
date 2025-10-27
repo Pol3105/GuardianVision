@@ -1,14 +1,19 @@
 # GuardianVision
 Tienda virtual de venta de cámaras
 
+Este proyecto ha sido desarrollado como parte de una asignatura de la Universidad de Granada (UGR). Junto con otros dos compañeros, hemos creado una tienda online con carrito de compra totalmente funcional.
 
-Abrimos una terminal en la capeta raiz del proyecto y ejecutamos
+---
+
+⚙️ Instalación y Ejecución
+
+Abrimos una terminal en la carpeta raíz del proyecto y ejecutamos:
 
 1.- npm install
 
-2.- composer istall
+2.- composer install
 
-3.- le damos a todo enter y al final en la confirmacion le damos a que si por lo que se nos ha creado un documento .json
+3.- Durante la instalación de Composer, aceptar todas las opciones por defecto. Al final confirmar la creación del archivo .json.
 
 4.- Añadir esto al archivo composer.json:
 
@@ -18,36 +23,35 @@ Abrimos una terminal en la capeta raiz del proyecto y ejecutamos
             "Controllers\\": "./controllers",
             "Model\\": "./models"
         }
-    },
+    }
 
-5.- Tras hacer esto en una terminal ponemos:
+5.- Ejecutar en terminal:
 
     composer dump-autoload
-
     composer install
 
-5- Con eso ya deberiamos poder ejecutarlo 
+6.- Con eso ya deberíamos poder ejecutarlo:
 
-    - En una terminal poner => npm run dev 
+    - En una terminal:
+        npm run dev
 
+    - En otra terminal (antes cambiar de carpeta):
+        cd public
+        php -S localhost:3000
 
-    - En otra terminal poner=>
-    Pero antes IMP tienes que cambiar de caperta =>
+---
 
-    cd public
-    php -S localhost:3000
+🗄️ Base de Datos (ejemplo inventado)
 
 CREATE database guardianvision;
 
 SHOW TABLES;
 
-Drop database guardianvision;
+DROP database guardianvision;
 
 USE guardianvision;
 
--- -----------------------------------------------------
--- Table `mydb`.`Almacen`
--- -----------------------------------------------------
+-- Tabla Almacen
 CREATE TABLE IF NOT EXISTS Almacen (
   id_almacen INT NOT NULL PRIMARY KEY auto_increment,
   nombre VARCHAR(100) NOT NULL,
@@ -56,13 +60,7 @@ CREATE TABLE IF NOT EXISTS Almacen (
   capacidad_ocupada INT NOT NULL
 );
 
-describe Almacen;
-
-drop table Almacen;
-
--- -----------------------------------------------------
--- Table `mydb`.`Producto`
--- -----------------------------------------------------
+-- Tabla Producto
 CREATE TABLE IF NOT EXISTS Producto (
   cod_producto VARCHAR(20) NOT NULL PRIMARY KEY,
   nombre VARCHAR(100) NOT NULL,
@@ -74,37 +72,18 @@ CREATE TABLE IF NOT EXISTS Producto (
   imagen varchar(50) not null
 );
 
-describe producto;
-
-drop table producto;
-
-
-drop table Carrito;
+-- Tabla Carrito
 CREATE TABLE IF NOT EXISTS Carrito (
   id INT AUTO_INCREMENT PRIMARY KEY,
   Cantidad FLOAT NOT NULL,
   idCliente INT NOT NULL,
   idProducto VARCHAR(20) NOT NULL,
   unique( idCliente ,idProducto,Cantidad ),
-  FOREIGN KEY (idProducto) REFERENCES Producto(cod_producto)
-	ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+  FOREIGN KEY (idProducto) REFERENCES Producto(cod_producto),
   FOREIGN KEY (idCliente) REFERENCES Cliente(id)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-);	
+);
 
-select * from Carrito;
-describe Carrito;
-describe Carrito;
-
-
-
--- -----------------------------------------------------
--- Table `mydb`.`Cliente`
--- -----------------------------------------------------
-
-drop table Cliente;
+-- Tabla Cliente
 CREATE TABLE IF NOT EXISTS Cliente (
   id INT AUTO_INCREMENT PRIMARY KEY,
   Nombre VARCHAR(45) NOT NULL,
@@ -112,27 +91,37 @@ CREATE TABLE IF NOT EXISTS Cliente (
   Telefono VARCHAR(45) NOT NULL,
   Email VARCHAR(45) NOT NULL,
   contraseña varchar(45) not null
-  );
-  
-  select * from Cliente;
+);
 
+-- Ejemplo de datos inventados
 
 INSERT INTO Almacen ( nombre, direccion, capacidad, capacidad_ocupada)
 VALUES 
 ('Almacén Central', 'Calle Seguridad 123, Madrid', 1000, 350),
 ('Almacén Sevilla', 'Avenida Videovigilancia 45, Sevilla', 800, 400);
 
-drop table Producto;
-
 INSERT INTO Producto (cod_producto, nombre, stock_actual, stock_minimo, precio, descripcion, ubicacion, imagen)
 VALUES 
 ('CAM123', 'Cámara IP Full HD', 150, 50, 89.99, 'Cámara de vigilancia con resolución Full HD y conexión IP', 1, 'CámaraIPFullHD'),
 ('SEN789', 'Sensor Movimiento WiFi', 200, 50, 29.90, 'Sensor inalámbrico de movimiento compatible con WiFi', 1, 'SensorMovimientoWiFi'),
-('DVR001', 'Grabador DVR 8 canales con salida HDMI', 60, 15, 159.00, 'Grabador digital con soporte para 8 cámaras y salida HDMI', 2, 'GrabadorDVR8canalesconsalidaHDMI'),
-('DISK01', 'Disco Duro 2TB para Videovigilancia', 100, 20, 89.50, 'Disco duro de 2TB optimizado para sistemas de videovigilancia', 1, 'DiscoDuro2TBparaVideovigilancia'),
-('CAM126', 'Cámara PTZ Motorizada Full HD', 50, 10, 199.99, 'Cámara motorizada PTZ con zoom y resolución Full HD', 1, 'CámaraPTZMotorizadaFullHD'),
-('KIT458', 'Kit de instalación universal', 200, 50, 24.95, 'Kit con herramientas y accesorios para instalación de cámaras', 2, 'Kitdeinstalaciónuniversal'),
-('SEN791', 'Sensor de humo inalámbrico', 120, 30, 34.95, 'Detector de humo con conectividad inalámbrica y alerta temprana', 1, 'Sensordehumoinalámbrico');
+('DVR001', 'Grabador DVR 8 canales con salida HDMI', 60, 15, 159.00, 'Grabador digital con soporte para 8 cámaras y salida HDMI', 2, 'GrabadorDVR8canalesconsalidaHDMI');
 
+---
 
+🛒 Funcionalidades principales
 
+- Añadir productos al carrito y gestionar cantidades.
+- Registro y login de clientes.
+- Gestión de stock de productos.
+- Visualización de productos con imágenes y descripciones.
+- Interfaz responsiva con SCSS y JavaScript.
+
+---
+
+📚 Cosas que he aprendido
+
+- Crear una tienda online completa en equipo utilizando PHP y MySQL.
+- Gestionar rutas, controladores y vistas mediante MVC.
+- Crear un carrito de compras funcional con relación entre clientes y productos.
+- Aplicar JavaScript y SCSS para mejorar la interactividad y el estilo.
+- Manejar datos de manera coherente y consistente en la base de datos.
