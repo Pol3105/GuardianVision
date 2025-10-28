@@ -1,21 +1,21 @@
 # GuardianVision
-Tienda virtual de venta de cámaras
+Online Camera Store
 
-Este proyecto ha sido desarrollado como parte de una asignatura de la Universidad de Granada (UGR). Junto con otros dos compañeros, hemos creado una tienda online con carrito de compra totalmente funcional.
+This project was developed as part of a course at the University of Granada (UGR). Together with two other classmates, we created a fully functional online store with a shopping cart.
 
 ---
 
-⚙️ Instalación y Ejecución
+⚙️ Installation & Execution
 
-Abrimos una terminal en la carpeta raíz del proyecto y ejecutamos:
+Open a terminal in the root folder of the project and run:
 
 1.- npm install
 
 2.- composer install
 
-3.- Durante la instalación de Composer, aceptar todas las opciones por defecto. Al final confirmar la creación del archivo .json.
+3.- During Composer installation, accept all default options. At the end, confirm the creation of the .json file.
 
-4.- Añadir esto al archivo composer.json:
+4.- Add the following to `composer.json`:
 
     "autoload": {
         "psr-4": {
@@ -25,103 +25,104 @@ Abrimos una terminal en la carpeta raíz del proyecto y ejecutamos:
         }
     }
 
-5.- Ejecutar en terminal:
+5.- Execute in terminal:
 
     composer dump-autoload
     composer install
 
-6.- Con eso ya deberíamos poder ejecutarlo:
+6.- After that, you should be able to run the project:
 
-    - En una terminal:
+    - In one terminal:
         npm run dev
 
-    - En otra terminal (antes cambiar de carpeta):
+    - In another terminal (change folder first):
         cd public
         php -S localhost:3000
 
 ---
 
-🗄️ Base de Datos (ejemplo inventado)
+🗄️ Database (example data)
 
-CREATE database guardianvision;
+```sql
+CREATE DATABASE guardianvision;
 
 SHOW TABLES;
 
-DROP database guardianvision;
+DROP DATABASE guardianvision;
 
 USE guardianvision;
 
--- Tabla Almacen
+-- Warehouse Table
 CREATE TABLE IF NOT EXISTS Almacen (
-  id_almacen INT NOT NULL PRIMARY KEY auto_increment,
+  id_almacen INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   nombre VARCHAR(100) NOT NULL,
   direccion VARCHAR(200) NOT NULL,
   capacidad INT NOT NULL,
   capacidad_ocupada INT NOT NULL
 );
 
--- Tabla Producto
+-- Product Table
 CREATE TABLE IF NOT EXISTS Producto (
   cod_producto VARCHAR(20) NOT NULL PRIMARY KEY,
   nombre VARCHAR(100) NOT NULL,
   stock_actual INT NOT NULL,
   stock_minimo INT NOT NULL,
   precio DECIMAL(10,2) NOT NULL,
-  descripcion varchar(200) not null,
+  descripcion VARCHAR(200) NOT NULL,
   ubicacion INT NOT NULL,
-  imagen varchar(50) not null
+  imagen VARCHAR(50) NOT NULL
 );
 
--- Tabla Carrito
+-- Cart Table
 CREATE TABLE IF NOT EXISTS Carrito (
   id INT AUTO_INCREMENT PRIMARY KEY,
   Cantidad FLOAT NOT NULL,
   idCliente INT NOT NULL,
   idProducto VARCHAR(20) NOT NULL,
-  unique( idCliente ,idProducto,Cantidad ),
+  UNIQUE(idCliente, idProducto, Cantidad),
   FOREIGN KEY (idProducto) REFERENCES Producto(cod_producto),
   FOREIGN KEY (idCliente) REFERENCES Cliente(id)
 );
 
--- Tabla Cliente
+-- Client Table
 CREATE TABLE IF NOT EXISTS Cliente (
   id INT AUTO_INCREMENT PRIMARY KEY,
   Nombre VARCHAR(45) NOT NULL,
   Direccion VARCHAR(45) NOT NULL,
   Telefono VARCHAR(45) NOT NULL,
   Email VARCHAR(45) NOT NULL,
-  contraseña varchar(45) not null
+  contraseña VARCHAR(45) NOT NULL
 );
 
--- Ejemplo de datos inventados
-
-INSERT INTO Almacen ( nombre, direccion, capacidad, capacidad_ocupada)
+-- Example Data
+INSERT INTO Almacen (nombre, direccion, capacidad, capacidad_ocupada)
 VALUES 
-('Almacén Central', 'Calle Seguridad 123, Madrid', 1000, 350),
-('Almacén Sevilla', 'Avenida Videovigilancia 45, Sevilla', 800, 400);
+('Central Warehouse', 'Calle Seguridad 123, Madrid', 1000, 350),
+('Seville Warehouse', 'Avenida Videovigilancia 45, Sevilla', 800, 400);
 
 INSERT INTO Producto (cod_producto, nombre, stock_actual, stock_minimo, precio, descripcion, ubicacion, imagen)
 VALUES 
-('CAM123', 'Cámara IP Full HD', 150, 50, 89.99, 'Cámara de vigilancia con resolución Full HD y conexión IP', 1, 'CámaraIPFullHD'),
-('SEN789', 'Sensor Movimiento WiFi', 200, 50, 29.90, 'Sensor inalámbrico de movimiento compatible con WiFi', 1, 'SensorMovimientoWiFi'),
-('DVR001', 'Grabador DVR 8 canales con salida HDMI', 60, 15, 159.00, 'Grabador digital con soporte para 8 cámaras y salida HDMI', 2, 'GrabadorDVR8canalesconsalidaHDMI');
+('CAM123', 'Full HD IP Camera', 150, 50, 89.99, 'Surveillance camera with Full HD resolution and IP connection', 1, 'FullHDIPCamera'),
+('SEN789', 'WiFi Motion Sensor', 200, 50, 29.90, 'Wireless motion sensor compatible with WiFi', 1, 'WiFiMotionSensor'),
+('DVR001', '8-Channel DVR with HDMI output', 60, 15, 159.00, 'Digital recorder supporting 8 cameras with HDMI output', 2, 'DVR8ChannelHDMI');
+```
+---
+
+🛒 Main Features
+
+- Add products to the cart and manage quantities.  
+- Client registration and login.  
+- Product stock management.  
+- Display products with images and descriptions.  
+- Responsive interface using SCSS and JavaScript.
 
 ---
 
-🛒 Funcionalidades principales
+📚 What I Learned
 
-- Añadir productos al carrito y gestionar cantidades.
-- Registro y login de clientes.
-- Gestión de stock de productos.
-- Visualización de productos con imágenes y descripciones.
-- Interfaz responsiva con SCSS y JavaScript.
+- Building a complete online store as a team using PHP and MySQL.  
+- Managing routes, controllers, and views following the MVC pattern.  
+- Creating a functional shopping cart linking clients and products.  
+- Applying JavaScript and SCSS to enhance interactivity and styling.  
+- Handling data consistently and coherently in the database.
 
----
-
-📚 Cosas que he aprendido
-
-- Crear una tienda online completa en equipo utilizando PHP y MySQL.
-- Gestionar rutas, controladores y vistas mediante MVC.
-- Crear un carrito de compras funcional con relación entre clientes y productos.
-- Aplicar JavaScript y SCSS para mejorar la interactividad y el estilo.
-- Manejar datos de manera coherente y consistente en la base de datos.
